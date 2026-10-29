@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
-import 'screens/splash_screen.dart';
+import 'package:recetas_app/screens/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const RecetasApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class RecetasApp extends StatelessWidget {
+  const RecetasApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "Recetas del Mayab",
       debugShowCheckedModeBanner: false,
-      title: 'RecetasApp',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
-      ),
       home: const SplashScreen(),
-    );
+    ); // MaterialApp
   }
 }

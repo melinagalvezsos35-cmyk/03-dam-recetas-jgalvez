@@ -28,21 +28,25 @@ class Receta {
   });
 
   factory Receta.fromJson(Map<String, dynamic> json) {
-    return Receta(
-      id: json['id'],
-      nombre: json['name'],
-      ingredientes: List<String>.from(json['ingredients']),
-      instrucciones: List<String>.from(json['instructions']),
-      tiempoPreparacion: json['prepTimeMinutes'],
-      tiempoCoccion: json['cookMinutes'],
-      porciones: json['servings'],
-      calorias: json['caloriesPerServing'],
-      imagenUrl: json['image'],
-      calificacion: (json['rating'] as num).toDouble(),
-      cocina: json['cuisine'] ?? '',
-      dificultad: json['difficulty'] ?? '',
-    );
-  }
+  return Receta(
+    id: json['id'] ?? 0,
+    nombre: json['name'] ?? '',
+    ingredientes: json['ingredients'] != null
+        ? List<String>.from(json['ingredients'])
+        : [],
+    instrucciones: json['instructions'] != null
+        ? List<String>.from(json['instructions'])
+        : [],
+    tiempoPreparacion: json['prepTimeMinutes'] ?? 0,
+    tiempoCoccion: json['cookMinutes'] ?? 0,
+    porciones: json['servings'] ?? 0,
+    calorias: json['caloriesPerServing'] ?? 0,
+    imagenUrl: json['image'] ?? '',
+    calificacion: (json['rating'] as num?)?.toDouble() ?? 0.0,
+    cocina: json['cuisine'] ?? '',
+    dificultad: json['difficulty'] ?? '',
+  );
+}
 
   int get tiempoTotal => tiempoPreparacion + tiempoCoccion;
 }
